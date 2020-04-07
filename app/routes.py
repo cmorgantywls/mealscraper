@@ -17,4 +17,4 @@ def handleDistrict():
         district = userdata['district']
         siteList = model.getInfo(district)
         print(siteList)
-        return "District stuff for " + district + " using Aankit's model."
+        return render_template("results.html", siteList=siteList, district=district)

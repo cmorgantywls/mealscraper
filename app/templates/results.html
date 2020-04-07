@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results | DOE Meal Locator, powered by Aankit</title>
+        <!-- Thank you Upperline for the template and Aankit for the Meal Scraper model! -->
+    </head>
+
+    <body>
+        <h1>NYC DOE Meal Locator: Results for {{ district }} </h1>
+        {% for item in siteList %}
+        <div>
+            <div>
+                {{ item[0] }}
+            </div>
+            <div>
+                {{ item[1] }}
+            </div>
+        </div>
+        {% endfor %}
+        
+        
+    </body>
+
+</html>

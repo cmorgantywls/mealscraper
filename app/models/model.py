@@ -2,6 +2,55 @@ import requests
 from bs4 import BeautifulSoup
 import sys
 
+def removeFormattingBreaks(list):
+    #returns list of sites that are cleaned of \n, \r, \xa0, still has white space
+    betterSiteList=[]
+
+    for each in list:
+        betterSiteList.append(each.replace('\n','*').replace('\r','*').replace('\xa0',""))
+        #print(each)
+
+    return betterSiteList
+
+def grabSaveRows(doc):
+     # Grab all of the rows and save slightly stripped data to a list
+    row_tags = doc.find_all('tr')
+    siteList=[]
+    for row in row_tags:
+        # print(row.text.strip())
+        siteList.append(row.text.strip()) #put into a list for easy printing
+    
+    return siteList
+
+def splitList(list):
+    #splits by * to return a list of lists - separating each item
+    theSplit = []
+
+    for each in list:
+        theSplit.append(each.split("*"))
+
+    return theSplit
+
+def getUseableList(doc):
+    #all the list clean up in one nice function.
+    theRows = grabSaveRows(doc)
+    noBreakList = removeFormattingBreaks(theRows)
+    listOfLists = splitList(noBreakList)
+
+    noWS=[]
+
+    for list in listOfLists:
+        for item in list:
+            list.remove('')
+
+    for list in listOfLists:
+        temp=[]
+        for item in list:
+            temp.append(item.lstrip())
+        noWS.append(temp)
+
+    return noWS
+
 #get district number via form
 def getInfo(district):
     # district = sys.argv[1]
@@ -51,14 +100,22 @@ def getInfo(district):
     response = requests.post(url, data=data)
     doc = BeautifulSoup(response.text, 'html.parser')
 
-    # Grab all of the rows
-    row_tags = doc.find_all('tr')
+    siteList = getUseableList(doc)
 
-    # Let's print the first 5
-    siteList=[]
+    # noWS=[]
 
-    for row in row_tags:
-        # print(row.text.strip())
-        siteList.append(row.text.strip())
-    
+    # for list in siteList:
+    #     for item in list:
+    #         list.remove('')
+
+    # for list in siteList:
+    #     temp=[]
+    #     for item in list:
+    #         temp.append(item.lstrip())
+    #     noWS.append(temp)
+
     return siteList
+
+# allInfo=getInfo("12")
+# print(allInfo[1])
+

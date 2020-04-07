@@ -8,8 +8,13 @@ def index():
     return render_template("index.html")
 
 @app.route('/sendDistrict', methods = ['GET','POST'])
-def handleDistrict:
+def handleDistrict():
     if request.method=="GET":
         return "You came from the wrong place, go back."
-    else: #method is POST
-        return "District stuff using Aankit's model."
+    else:   #method is POST
+        userdata = dict(request.form)
+        print(userdata)
+        district = userdata['district']
+        siteList = model.getInfo(district)
+        print(siteList)
+        return "District stuff for " + district + " using Aankit's model."

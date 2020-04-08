@@ -1,15 +1,50 @@
 <html>
     <head>
+        <!-- Thank you Upperline for the template and Aankit for the Meal Scraper model! -->
         <title>DOE Meal Locator, powered by Aankit</title>
 
-        <!-- Thank you Upperline for the template and Aankit for the Meal Scraper model! -->
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+
     </head>
     <body>
-        <h1>NYC DOE Meal Locator</h1>
-        <p>A meal locator for free food pickup in the Department of Education.</p>
-        <form method="post" action="/sendDistrict">
-            <input type="text" name='district' value="Enter the district number"/>
-            <input type="submit" value="Submit"/>
-        </form>
+        <div class="cyan" id="header">
+            <h1>NYC DOE Meal Locator</h1>
+        </div>
+        <div class="container">
+            <div class="row col-container">
+                <div class="col s6 orange lighten-2" id="leftguy">
+                    <h3>A meal locator for free food pickup within the Department of Education.</h3>
+                    <p>This tool utilizes data scraped from the <a href="https://www.opt-osfns.org/schoolfoodny/meals/">New York City Department of Education School Meal's Website</a> but this is not an endoresed tool of the DOE.</p>
+                    <p>During the COVID pandemic, the NYC DOE is determined to make food available to ALL New Yorkers across 400 Meal Hubs in the city. These Meal Hubs are open during breakfast and lunch hours and offer meals for a range of dietary preferences including vegetarian and halal. One adult or child can pick up three meals at a time, and no one will be turned away. All meals must be eaten off premises (maintain your social distancing!). For information on pick up times and more information, <a href="https://www.schools.nyc.gov/school-life/food/free-meals-for-all">visit the official site here.</a> </p>
+                </div>
+                <div class = "col s6">
+                    <p>To utilize the form, please enter the school district number where you live or are looking to pick up food. (If you don't know your number, use the map below.)</p>
+                    <p>Please enter district numbers as two digit numbers only, so for <strong>District 9</strong>, you would enter <strong>09</strong>.
+                    <form method="post" action="/sendDistrict">
+                        <input type="text" name='district' value="Enter the district number"/>
+                        <input type="submit" value="Submit"/>
+                    </form>
+            
+                    <div class="col s12 lime lighten-3">
+                        <h2>Find Your District.</h2>
+                    </div>
+                    <div class="col s12">
+                        <iframe width="500px" title="NYC School District Boundaries" height="425px" src="https://data.cityofnewyork.us/w/p5vh-vm7p/25te-f2tw?cur=qAyC086lJ4Z&from=root" frameborder="0"scrolling="no"><a href="https://data.cityofnewyork.us/Education/NYC-School-District-Boundaries/p5vh-vm7p" title="NYC School District Boundaries" target="_blank">NYC School District Boundaries</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class = "cyan darken-2" id="footer">
+        Brains by <a href="https://twitter.com/aankit">Aankit</a>.<BR>
+        Beauty by <a href="https://twitter.com/courtney_ryanne">Courtney</a>.<BR>
+        Template && Support by <a href="https://www.upperlinecode.com/">Upperline</a>.<BR>
+        Data by <a href="https://www.schools.nyc.gov/">NYC Schools.</a><BR>
+    </div>
     </body>
 </html>

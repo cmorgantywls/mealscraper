@@ -1,24 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Results | DOE Meal Locator, powered by Aankit</title>
         <!-- Thank you Upperline for the template and Aankit for the Meal Scraper model! -->
+        <title>Results | DOE Meal Locator, powered by Aankit</title>
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+
     </head>
 
     <body>
-        <h1>NYC DOE Meal Locator: Results for {{ district }} </h1>
-        {% for item in siteList %}
-        <div>
-            <div>
-                {{ item[0] }}
-            </div>
-            <div>
-                {{ item[1] }}
-            </div>
+        <div class = "cyan" id="header">
+            <h1>NYC DOE Meal Locator</h1>
         </div>
-        {% endfor %}
         
-        
+        <div class="container">
+            <div class = "col s12">
+                <h3>NYC DOE Meal Locator: Results for District {{ district }} </h3>
+            </div>
+
+            {% for item in siteList %}
+            <div class="col s4">
+                <div class="{{ loop.cycle('odd', 'even') }}">
+                    <h4>{{ item[0] }}</h4>
+                </div>
+                <div class="{{ loop.cycle('odd1', 'even1') }}">
+                    <p>{{ item[1] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <div class = "cyan darken-2" id="footer">
+            Brains by <a href="https://twitter.com/aankit">Aankit</a>.<BR>
+            Beauty by <a href="https://twitter.com/courtney_ryanne">Courtney</a>.<BR>
+            Template && Support by <a href="https://www.upperlinecode.com/">Upperline</a>.<BR>
+            Data by <a href="https://www.schools.nyc.gov/">NYC Schools.</a><BR>
+        </div>
     </body>
 
 </html>
